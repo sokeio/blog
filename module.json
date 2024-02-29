@@ -1,0 +1,12 @@
+{
+    "id":"module-content-d5df7182-59b6-4873-9585-c48e38ebb1914149095",
+    "name": "Content",
+    "version":"v1.0.0",
+    "alias": "content",
+    "description": "",
+    "keywords": [],
+    "priority": 200,
+    "aliases": {},
+    "namespace":"Sokeio\\Content",
+    "requires": []
+}

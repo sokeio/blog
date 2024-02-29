@@ -1,0 +1,27 @@
+{
+    "name": "sokeio/content",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nguyen Van Hau",
+            "email": "nguyenvanhaudev@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": ["Sokeio\\Content\\ContentServiceProvider"],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+         "files": [
+            "helpers/constraint.php",
+            "helpers/function.php"
+        ],
+        "psr-4": {
+            "Sokeio\\Content\\": "src",
+            "Sokeio\\Content\\Database\\Factories\\": "database/factories",
+            "Sokeio\\Content\\Database\\Seeders\\": "database/seeders"
+        }
+    }
+}
