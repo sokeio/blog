@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Sokeio\Blog\Livewire\MenuItemCategory;
 use Sokeio\Blog\Livewire\MenuItemPost;
+use Sokeio\Blog\Shortcodes\ShortcodesServerProvider;
 use Sokeio\Laravel\ServicePackage;
 use Sokeio\Concerns\WithServiceProvider;
 use Sokeio\Facades\Menu;
@@ -41,6 +42,7 @@ class BlogServiceProvider extends ServiceProvider
     }
     private function bootGate()
     {
+        $this->app->register(ShortcodesServerProvider::class);
         if (!$this->app->runningInConsole()) {
             add_filter(PLATFORM_PERMISSION_CUSTOME, function ($prev) {
                 return [
