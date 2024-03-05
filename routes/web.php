@@ -11,10 +11,10 @@
 |
 */
 
-use Sokeio\Blog\Livewire\CatalogView;
-use Sokeio\Blog\Livewire\PostView;
-use Sokeio\Blog\Livewire\TagView;
+use Sokeio\Blog\Livewire\CatalogPageView;
+use Sokeio\Blog\Livewire\PostPageView;
+use Sokeio\Blog\Livewire\TagPageView;
 
-permalink_route('post_permalink', 'post/{post}', PostView::class, 'post.slug');
-permalink_route('catalog_permalink', 'catalog/{catalog}', CatalogView::class, 'catalog.slug');
-permalink_route('tag_permalink', 'tag/{tag}', TagView::class, 'tag.slug');
+permalink_route('post_permalink', 'post/{post}', CatalogPageView::class, 'post.slug');
+permalink_route('catalog_permalink', 'catalog/{catalog}', PostPageView::class, 'catalog.slug');
+permalink_route('tag_permalink', 'tag/{tag}', TagPageView::class, 'tag.slug');

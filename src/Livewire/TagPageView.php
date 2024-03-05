@@ -7,7 +7,7 @@ use Sokeio\Component;
 use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
 
-class TagView extends Component
+class TagPageView extends Component
 {
     public Tag $tag;
     public function mount()
@@ -28,6 +28,6 @@ class TagView extends Component
     }
     public function render()
     {
-        return view_scope('blog::tag-view', ['tag' => $this->tag]);
+        return view_scope('blog::tag-page-view', ['tag' => $this->tag]);
     }
 }

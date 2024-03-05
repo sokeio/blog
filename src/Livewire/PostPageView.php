@@ -7,7 +7,7 @@ use Sokeio\Component;
 use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
 
-class PostView extends Component
+class PostPageView extends Component
 {
     public Post $post;
     public function mount()
@@ -28,6 +28,6 @@ class PostView extends Component
     }
     public function render()
     {
-        return view_scope('blog::post-view', ['post' => $this->post]);
+        return view_scope('blog::post-page-view', ['post' => $this->post]);
     }
 }
