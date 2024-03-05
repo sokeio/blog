@@ -1,8 +1,8 @@
 <?php
 
-namespace Sokeio\Content\Livewire\Catalog;
+namespace Sokeio\Blog\Livewire\Catalog;
 
-use Sokeio\Content\Models\Catalog;
+use Sokeio\Blog\Models\Catalog;
 use Sokeio\Components\Table;
 use Sokeio\Components\UI;
 
@@ -24,8 +24,9 @@ class CatalogTable extends Table
     public function getColumns()
     {
         return [
-            UI::Text('name')->Label(__('Name')),
-            UI::Text('slug')->Label(__('Slug')),
+            UI::Text('name')->Label(__('Name'))->FieldValue(function ($item) {
+                return  "<a href='" . $item->getSeoCanonicalUrl() . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
+            }),
             UI::Text('status')->Label(__('Status'))->NoSort(),
             UI::Text('created_at')->Label(__('Created At')),
             UI::Text('updated_at')->Label(__('Updated At')),

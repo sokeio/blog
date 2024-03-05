@@ -1,9 +1,9 @@
 <?php
 
-namespace Sokeio\Content\Livewire\Post;
+namespace Sokeio\Blog\Livewire\Post;
 
-use Sokeio\Content\Models\Catalog;
-use Sokeio\Content\Models\Post;
+use Sokeio\Blog\Models\Catalog;
+use Sokeio\Blog\Models\Post;
 use Sokeio\Components\Table;
 use Sokeio\Components\UI;
 
@@ -45,6 +45,14 @@ class PostTable extends Table
     {
         return apply_filters('CMS_POST_BUTTONS', [
             UI::ButtonCreate(__('Create'))->ModalRoute($this->getRoute() . '.add')->ModalTitle(__('Create Data'))->ModalFullscreen(),
+            UI::Button(__('Create With Builder'))->Link(function () {
+                if (!post_with_builder()) {
+                    return '#';
+                }
+                return route('admin.post.create-builder');
+            })->When(function () {
+                return post_with_builder();
+            }),
         ]);
     }
     protected function getTableActions()
@@ -55,6 +63,14 @@ class PostTable extends Table
                     'dataId' => $row->id
                 ];
             })->ModalTitle(__('Edit Data'))->ModalFullscreen(),
+            UI::Button(__('Edit With Builder'))->Link(function ($item) {
+                if (!post_with_builder()) {
+                    return '#';
+                }
+                return route('admin.post.edit-builder', ['dataId' => $item->getDataItem()->id]);
+            })->When(function () {
+                return post_with_builder();
+            }),
             UI::ButtonRemove(__('Remove'))->Confirm(__('Do you want to delete this record?'), 'Confirm')->WireClick(function ($item) {
                 return 'doRemove(' . $item->getDataItem()->id . ')';
             })
@@ -69,7 +85,7 @@ class PostTable extends Table
     {
         return [
             UI::Text('name')->Label(__('Title'))->FieldValue(function ($item) {
-                return  "<a href='" . route('post.slug', $item->slug) . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
+                return  "<a href='" . $item->getSeoCanonicalUrl() . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
             }),
             UI::Text('catalogs')->Label(__('Category'))->NoSort()->FieldValue(function ($item) {
                 if (!$item->catalogs || count($item->catalogs) == 0) {

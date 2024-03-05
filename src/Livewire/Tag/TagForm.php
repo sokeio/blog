@@ -1,11 +1,11 @@
 <?php
 
-namespace Sokeio\Content\Livewire\Tag;
+namespace Sokeio\Blog\Livewire\Tag;
 
 use Sokeio\Components\Form;
 use Sokeio\Components\UI;
 use Sokeio\Breadcrumb;
-use Sokeio\Content\Models\Tag;
+use Sokeio\Blog\Models\Tag;
 
 class TagForm extends Form
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sokeio\Content\Models;
+namespace Sokeio\Blog\Models;
 
 use Sokeio\Model;
 use Sokeio\Concerns\WithSlug;

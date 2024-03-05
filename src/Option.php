@@ -1,6 +1,6 @@
 <?php
 
-namespace Sokeio\Content;
+namespace Sokeio\Blog;
 
 use Sokeio\PlatformOperation;
 

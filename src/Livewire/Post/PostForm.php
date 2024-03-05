@@ -1,13 +1,13 @@
 <?php
 
-namespace Sokeio\Content\Livewire\Post;
+namespace Sokeio\Blog\Livewire\Post;
 
 use Sokeio\Components\Form;
 use Sokeio\Components\UI;
 use Sokeio\Breadcrumb;
-use Sokeio\Content\Models\Catalog;
-use Sokeio\Content\Models\Post;
-use Sokeio\Content\Models\Tag;
+use Sokeio\Blog\Models\Catalog;
+use Sokeio\Blog\Models\Post;
+use Sokeio\Blog\Models\Tag;
 
 
 class PostForm extends Form
@@ -97,7 +97,7 @@ class PostForm extends Form
                         UI::Column8([
                             UI::Text('name')->Label(__('Title'))->required(),
                             UI::Text('slug')->Label(__('Slug')),
-                            UI::Tinymce('content')->Label(__('Content'))->required(),
+                            UI::Tinymce('content')->Label(__('Blog'))->required(),
                             UI::Textarea('description')->Label(__('Description')),
                             UI::Textarea('custom_js')->Label(__('Custom Js')),
                             UI::Textarea('custom_css')->Label(__('Custom CSS')),

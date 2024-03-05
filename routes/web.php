@@ -11,9 +11,9 @@
 |
 */
 
-use Sokeio\Content\Livewire\CatalogView;
-use Sokeio\Content\Livewire\PostView;
-use Sokeio\Content\Livewire\TagView;
+use Sokeio\Blog\Livewire\CatalogView;
+use Sokeio\Blog\Livewire\PostView;
+use Sokeio\Blog\Livewire\TagView;
 
 permalink_route('post_permalink', 'post/{post}', PostView::class, 'post.slug');
 permalink_route('catalog_permalink', 'catalog/{catalog}', CatalogView::class, 'catalog.slug');

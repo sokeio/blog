@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Content',
+    'name' => 'Blog',
     'commands' => [],
     'fields' => [],
     'shortcodes' => [],

@@ -21,8 +21,7 @@ return new class extends Migration
             $table->integer('author_id');
             $table->tinyInteger('is_featured')->unsigned()->default(0);
             $table->string('image', 255)->nullable();
-            $table->integer('views')->unsigned()->default(0);
-            $table->integer('rate')->unsigned()->default(0);
+            $table->string('view_layout')->nullable();
             $table->string('format_type', 30)->nullable();
             $table->string('layout', 255)->nullable();
             $table->datetime('published_at')->nullable();
@@ -41,7 +40,7 @@ return new class extends Migration
             $table->integer('parent_id')->unsigned()->default(0);
             $table->string('description', 400)->nullable();
             $table->string('image', 255)->nullable();
-            $table->integer('views')->unsigned()->default(0);
+            $table->string('view_layout')->nullable();
             $table->string('status', 60)->nullable()->default('published');
             $table->integer('author_id');
             $table->string('icon', 60)->nullable();
@@ -57,7 +56,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('slug', 500);
             $table->string('image', 255)->nullable();
-            $table->integer('views')->unsigned()->default(0);
+            $table->string('view_layout')->nullable();
             $table->integer('author_id');
             $table->string('description', 400)->nullable()->default('');
             $table->string('status', 60)->nullable()->default('published');

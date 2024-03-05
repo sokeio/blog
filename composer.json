@@ -1,5 +1,5 @@
 {
-    "name": "sokeio/content",
+    "name": "sokeio/blog",
     "description": "",
     "authors": [
         {
@@ -9,7 +9,7 @@
     ],
     "extra": {
         "laravel": {
-            "providers": ["Sokeio\\Content\\ContentServiceProvider"],
+            "providers": ["Sokeio\\Blog\\BlogServiceProvider"],
             "aliases": {}
         }
     },
@@ -19,9 +19,9 @@
             "helpers/function.php"
         ],
         "psr-4": {
-            "Sokeio\\Content\\": "src",
-            "Sokeio\\Content\\Database\\Factories\\": "database/factories",
-            "Sokeio\\Content\\Database\\Seeders\\": "database/seeders"
+            "Sokeio\\Blog\\": "src",
+            "Sokeio\\Blog\\Database\\Factories\\": "database/factories",
+            "Sokeio\\Blog\\Database\\Seeders\\": "database/seeders"
         }
     }
 }

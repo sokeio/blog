@@ -1,11 +1,11 @@
 <?php
 
-namespace Sokeio\Content\Livewire\Catalog;
+namespace Sokeio\Blog\Livewire\Catalog;
 
 use Sokeio\Components\Form;
 use Sokeio\Components\UI;
 use Sokeio\Breadcrumb;
-use Sokeio\Content\Models\Catalog;
+use Sokeio\Blog\Models\Catalog;
 
 class CatalogForm extends Form
 {

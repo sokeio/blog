@@ -1,8 +1,8 @@
 <?php
 
-namespace Sokeio\Content\Livewire;
+namespace Sokeio\Blog\Livewire;
 
-use Sokeio\Content\Models\Post;
+use Sokeio\Blog\Models\Post;
 use Sokeio\Components\FormMenu;
 use Sokeio\Components\UI;
 use Sokeio\Menu\MenuItemBuilder;
@@ -11,7 +11,7 @@ class MenuItemPost extends FormMenu
 {
     public static function RenderItem(MenuItemBuilder $item)
     {
-        echo  view_scope('sokeio::menu.item.link', ['item' => $item, 'link' => Post::find($item->getValueContentData())?->getSeoCanonicalUrl()])->render();
+        echo  view_scope('sokeio::menu.item.link', ['item' => $item, 'link' => Post::find($item->getValueBlogData())?->getSeoCanonicalUrl()])->render();
     }
     public static function getMenuName()
     {

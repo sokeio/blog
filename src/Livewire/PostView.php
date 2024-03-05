@@ -1,12 +1,11 @@
 <?php
 
-namespace Sokeio\Content\Livewire;
+namespace Sokeio\Blog\Livewire;
 
-use Sokeio\Content\Models\Post;
+use Sokeio\Blog\Models\Post;
 use Sokeio\Component;
 use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
-use Sokeio\Seo\Facades\SEO;
 
 class PostView extends Component
 {
@@ -29,6 +28,6 @@ class PostView extends Component
     }
     public function render()
     {
-        return view_scope('content::post-view', ['post' => $this->post]);
+        return view_scope('blog::post-view', ['post' => $this->post]);
     }
 }

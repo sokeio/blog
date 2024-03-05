@@ -1,8 +1,8 @@
 <?php
 
-namespace Sokeio\Content\Livewire;
+namespace Sokeio\Blog\Livewire;
 
-use Sokeio\Content\Models\Tag;
+use Sokeio\Blog\Models\Tag;
 use Sokeio\Component;
 use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
@@ -28,6 +28,6 @@ class TagView extends Component
     }
     public function render()
     {
-        return view_scope('content::tag-view', ['tag' => $this->tag]);
+        return view_scope('blog::tag-view', ['tag' => $this->tag]);
     }
 }

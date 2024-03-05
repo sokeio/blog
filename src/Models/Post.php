@@ -1,6 +1,6 @@
 <?php
 
-namespace Sokeio\Content\Models;
+namespace Sokeio\Blog\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Sokeio\Comment\Concerns\Commentable;

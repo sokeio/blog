@@ -1,11 +1,11 @@
 <?php
 
-namespace Sokeio\Content\Livewire;
+namespace Sokeio\Blog;
 
 use Sokeio\Builder\FormBuilder;
-use Sokeio\Content\Models\Catalog;
-use Sokeio\Content\Models\Post;
-use Sokeio\Content\Models\Tag;
+use Sokeio\Blog\Models\Catalog;
+use Sokeio\Blog\Models\Post;
+use Sokeio\Blog\Models\Tag;
 use Sokeio\Components\UI;
 
 class PostBuilder extends FormBuilder
@@ -83,7 +83,7 @@ class PostBuilder extends FormBuilder
         return UI::Prex('data', [
             UI::Row([
                 UI::Column12([
-                    UI::Hidden('content')->ValueDefault('')->required()->Label(__('Content')),
+                    UI::Hidden('content')->ValueDefault('')->required()->Label(__('Blog')),
                     UI::Hidden('author_id')->ValueDefault(function () {
                         return auth()->user()->id;
                     }),
