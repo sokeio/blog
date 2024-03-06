@@ -14,7 +14,7 @@ class PostShortcode extends Component
     use WithLoadMore {
         loadMore as loadMoreTrait;
     }
-    public static function getName()
+    public static function getTitle()
     {
         return __('blog::shortcode.post');
     }
@@ -40,11 +40,6 @@ class PostShortcode extends Component
             UI::Checkbox('is_container')->Label(__('Use Container'))->NoSort(),
         ];
     }
-    public static function EnableChild()
-    {
-        return false;
-    }
-
     public $title;
     public $order_by;
     public $limit;
