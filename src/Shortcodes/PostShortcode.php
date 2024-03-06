@@ -3,6 +3,7 @@
 namespace Sokeio\Blog\Shortcodes;
 
 use Sokeio\Blog\Models\Catalog;
+use Sokeio\Blog\Models\Post;
 use Sokeio\Shortcode\WithShortcode;
 use Sokeio\Component;
 use Sokeio\Components\UI;
@@ -28,13 +29,17 @@ class PostShortcode extends Component
             UI::Text('title')->Label(__('Title'))->NoSort(),
             UI::Text('keywords')->Label(__('Keywords(comma separated)'))->NoSort(),
             UI::Select('catalog_id')->Label(__('Catalog'))->DataSource(function () {
-                return Catalog::all()->map(function ($item) {
-                    return [
-                        'id' => $item->id,
-                        'name' => $item->name
-                    ];
-                });
+                return [
+                    ['id' => '', 'name' => __('All')],
+                    ...Catalog::all()->map(function ($item) {
+                        return [
+                            'id' => $item->id,
+                            'name' => $item->name
+                        ];
+                    })
+                ];
             }),
+            UI::Text('class_item')->Label(__('Class Item'))->NoSort()->ValueDefault('col-lg-4 col-md-6 col-sm-12 col-xs-12'),
             UI::Number('limit')->Label(__('Limit'))->NoSort(),
             UI::Checkbox('is_load_more')->Label(__('Use Load More'))->NoSort(),
             UI::Checkbox('is_container')->Label(__('Use Container'))->NoSort(),
@@ -47,9 +52,10 @@ class PostShortcode extends Component
     public $is_load_more;
     public $keywords;
     public $catalog_id;
+    public $class_item;
     protected function getQuery()
     {
-        $query = Catalog::query();
+        $query = Post::query();
         switch ($this->order_by) {
             case 'view_count':
                 $query->with('views', function ($query) {
@@ -98,6 +104,6 @@ class PostShortcode extends Component
     }
     public function render()
     {
-        return view('blog::shortcodes.catalog');
+        return view('blog::shortcodes.post');
     }
 }

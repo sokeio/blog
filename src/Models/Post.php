@@ -43,7 +43,7 @@ class Post extends Model
     ];
     public function catalogs()
     {
-        return $this->belongsToMany(Catalog::class, 'post_categories', 'post_id', 'category_id');
+        return $this->belongsToMany(Catalog::class, 'post_catalogs', 'post_id', 'catalog_id');
     }
     public function tags()
     {

@@ -8,7 +8,7 @@ use Sokeio\Seo\HasSEO;
 
 class Catalog extends Model
 {
-    use WithSlug,HasSEO;
+    use WithSlug, HasSEO;
 
     public function getSeoCanonicalUrl()
     {

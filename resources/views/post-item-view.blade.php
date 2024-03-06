@@ -6,7 +6,7 @@
             dy=".3em">Thumbnail</text>
     </svg>
     <div class="card-body">
-        <h2><a> abcd dff ádfádf adsfád f sadf ád f sa f sa</a></h2>
+        <h2><a href="{{ $post->getSeoCanonicalUrl() }}" title="{{ $post->name }}"> {{ $post->name }}</a></h2>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
             additional content. This content is a little bit longer.</p>
         <div class="d-flex justify-content-between align-items-center">
