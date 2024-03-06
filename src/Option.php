@@ -2,10 +2,11 @@
 
 namespace Sokeio\Blog;
 
-use Sokeio\PlatformOperation;
+use Sokeio\WithOption;
 
-class Option extends PlatformOperation
+class Option
 {
+    use WithOption;
       // Only Theme Site
     public static function SetupOption()
     {
