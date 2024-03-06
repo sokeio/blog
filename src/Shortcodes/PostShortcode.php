@@ -14,15 +14,15 @@ class PostShortcode extends Component
     use WithLoadMore {
         loadMore as loadMoreTrait;
     }
-    public static function getShortcodeName()
+    public static function getName()
     {
         return __('blog::shortcode.post');
     }
-    public static function getShortcodeKey()
+    public static function getKey()
     {
         return 'blog::post';
     }
-    public static function getShortcodeParamUI()
+    public static function getParamUI()
     {
         return [
             UI::Text('title')->Label(__('Title'))->NoSort(),
@@ -40,7 +40,7 @@ class PostShortcode extends Component
             UI::Checkbox('is_container')->Label(__('Use Container'))->NoSort(),
         ];
     }
-    public static function EnableContent()
+    public static function EnableChild()
     {
         return false;
     }

@@ -8,6 +8,7 @@ class ShortcodesServerProvider extends ServiceProvider
 {
     public function boot()
     {
-        CatalogShortcode::RegisterShortcode();
+        // CatalogShortcode::Register();
+        PostShortcode::Register();
     }
 }
