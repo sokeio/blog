@@ -24,12 +24,12 @@ class CatalogTable extends Table
     public function getColumns()
     {
         return [
-            UI::Text('name')->Label(__('Name'))->FieldValue(function ($item) {
+            UI::text('name')->label(__('Name'))->fieldValue(function ($item) {
                 return  "<a href='" . $item->getSeoCanonicalUrl() . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
             }),
-            UI::Text('status')->Label(__('Status'))->NoSort(),
-            UI::Text('created_at')->Label(__('Created At')),
-            UI::Text('updated_at')->Label(__('Updated At')),
+            UI::text('status')->label(__('Status'))->NoSort(),
+            UI::text('created_at')->label(__('Created At')),
+            UI::text('updated_at')->label(__('Updated At')),
         ];
     }
 }

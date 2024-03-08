@@ -25,10 +25,10 @@ class CatalogShortcode extends Component
     public static function getParamUI()
     {
         return [
-            UI::Text('title')->Label(__('Title'))->NoSort(),
-            UI::Number('limit')->Label(__('Limit'))->NoSort(),
-            UI::Checkbox('is_load_more')->Label(__('Use Load More'))->NoSort(),
-            UI::Checkbox('is_container')->Label(__('Use Container'))->NoSort(),
+            UI::text('title')->label(__('Title'))->NoSort(),
+            UI::number('limit')->label(__('Limit'))->NoSort(),
+            UI::checkBox('is_load_more')->label(__('Use Load More'))->NoSort(),
+            UI::checkBox('is_container')->label(__('Use Container'))->NoSort(),
         ];
     }
    

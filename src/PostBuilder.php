@@ -17,7 +17,7 @@ class PostBuilder extends FormBuilder
     {
         return __('Post');
     }
-    protected function FooterUI()
+    protected function footerUI()
     {
         return [];
     }
@@ -78,19 +78,19 @@ class PostBuilder extends FormBuilder
             return ['value' => $item->name, 'id' => $item->id];
         });
     }
-    protected function FormUI()
+    protected function formUI()
     {
-        return UI::Prex('data', [
-            UI::Row([
-                UI::Column12([
-                    UI::Hidden('content')->ValueDefault('')->required()->Label(__('Blog')),
-                    UI::Hidden('author_id')->ValueDefault(function () {
+        return UI::prex('data', [
+            UI::row([
+                UI::column12([
+                    UI::hidden('content')->valueDefault('')->required()->label(__('Blog')),
+                    UI::hidden('author_id')->valueDefault(function () {
                         return auth()->user()->id;
                     }),
-                    UI::Div(UI::Error('content')),
-                    UI::Text('name')->Label(__('Title'))->required(),
-                    UI::Text('slug')->Label(__('Slug')),
-                    UI::Select('status')->Label(__('Status'))->DataSource(function () {
+                    UI::Div(UI::error('content')),
+                    UI::text('name')->label(__('Title'))->required(),
+                    UI::text('slug')->label(__('Slug')),
+                    UI::select('status')->label(__('Status'))->dataSource(function () {
                         return [
                             [
                                 'id' => 'draft',
@@ -101,18 +101,18 @@ class PostBuilder extends FormBuilder
                                 'name' => __('Published')
                             ]
                         ];
-                    })->ValueDefault('published'),
-                    UI::Image('image')->Label(__('Image')),
-                    UI::CheckboxMutil('categoryIds')->Prex('')->Label(__('Category'))->DataSource(function () {
+                    })->valueDefault('published'),
+                    UI::image('image')->label(__('Image')),
+                    UI::checkBoxMutil('categoryIds')->prex('')->label(__('Category'))->dataSource(function () {
                         return Catalog::query()->where('status', 'published')->get();
-                    })->NoSave(),
-                    UI::Tagify('tagIds')->Prex('')->Label(__('Tags'))->FieldOption(function () {
+                    })->noSave(),
+                    UI::tagify('tagIds')->prex('')->label(__('Tags'))->fieldOption(function () {
                         return [
                             'whitelistAction' => 'TagSearch',
                             'searchKeys' => ["name"]
                         ];
-                    })->NoSave(),
-                    UI::Select('layout')->Label(__('Layout'))->DataSource(function () {
+                    })->noSave(),
+                    UI::select('layout')->label(__('Layout'))->dataSource(function () {
                         return [
                             [
                                 'id' => 'default',
@@ -124,10 +124,10 @@ class PostBuilder extends FormBuilder
                             ],
                         ];
                     }),
-                    UI::Textarea('description')->Label(__('Description')),
-                    UI::Textarea('custom_js')->Label(__('Custom Js')),
-                    UI::Textarea('custom_css')->Label(__('Custom CSS')),
-                    UI::Button(__('Save article'))->WireClick('doSave()')->ClassName('w-100 mb-2'),
+                    UI::textarea('description')->label(__('Description')),
+                    UI::textarea('custom_js')->label(__('Custom Js')),
+                    UI::textarea('custom_css')->label(__('Custom CSS')),
+                    UI::button(__('Save article'))->wireClick('doSave()')->className('w-100 mb-2'),
                 ]),
             ])
         ]);

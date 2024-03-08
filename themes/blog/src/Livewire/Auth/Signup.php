@@ -16,7 +16,7 @@ class Signup extends Component
         'email' => 'required|email:rfc,dns|unique:users,email',
         'agree' => 'required',
     ];
-    public function DoWork()
+    public function doWork()
     {
         $this->validate();
         $user = new (config('sokeio.model.user'));

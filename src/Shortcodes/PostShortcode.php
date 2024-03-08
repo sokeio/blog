@@ -26,9 +26,9 @@ class PostShortcode extends Component
     public static function getParamUI()
     {
         return [
-            UI::Text('title')->Label(__('Title'))->NoSort(),
-            UI::Text('keywords')->Label(__('Keywords(comma separated)'))->NoSort(),
-            UI::Select('catalog_id')->Label(__('Catalog'))->DataSource(function () {
+            UI::text('title')->label(__('Title'))->NoSort(),
+            UI::text('keywords')->label(__('Keywords(comma separated)'))->NoSort(),
+            UI::select('catalogId')->label(__('Catalog'))->dataSource(function () {
                 return [
                     ['id' => '', 'name' => __('All')],
                     ...Catalog::all()->map(function ($item) {
@@ -39,24 +39,25 @@ class PostShortcode extends Component
                     })
                 ];
             }),
-            UI::Text('class_item')->Label(__('Class Item'))->NoSort()->ValueDefault('col-lg-4 col-md-6 col-sm-12 col-xs-12'),
-            UI::Number('limit')->Label(__('Limit'))->NoSort(),
-            UI::Checkbox('is_load_more')->Label(__('Use Load More'))->NoSort(),
-            UI::Checkbox('is_container')->Label(__('Use Container'))->NoSort(),
+            UI::text('classItem')->label(__('Class Item'))
+                ->NoSort()->valueDefault('col-lg-4 col-md-6 col-sm-12 col-xs-12'),
+            UI::number('limit')->label(__('Limit'))->NoSort(),
+            UI::checkBox('isLoadMore')->label(__('Use Load More'))->NoSort(),
+            UI::checkBox('isContainer')->label(__('Use Container'))->NoSort(),
         ];
     }
     public $title;
-    public $order_by;
+    public $orderby;
     public $limit;
-    public $is_container;
-    public $is_load_more;
+    public $isContainer;
+    public $isLoadMore;
     public $keywords;
-    public $catalog_id;
-    public $class_item;
+    public $catalogId;
+    public $classItem;
     protected function getQuery()
     {
         $query = Post::query();
-        switch ($this->order_by) {
+        switch ($this->orderby) {
             case 'view_count':
                 $query->with('views', function ($query) {
                     $query->orderBy('count', 'desc');
@@ -65,16 +66,18 @@ class PostShortcode extends Component
             case 'newest':
                 $query->orderBy('created_at', 'desc');
                 break;
+            default:
+                break;
         }
-        if (!$this->is_load_more) {
+        if (!$this->isLoadMore) {
             if ($this->limit) {
                 $query->limit($this->limit);
             } else {
                 $query->limit(12);
             }
         }
-        if ($this->catalog_id) {
-            $query->where('catalog_id', $this->catalog_id);
+        if ($this->catalogId) {
+            $query->where('catalogId', $this->catalogId);
         }
         if ($this->keywords) {
             $arrKeywords = explode(',', $this->keywords);
@@ -91,7 +94,7 @@ class PostShortcode extends Component
 
     public function loadMore()
     {
-        if ($this->is_load_more) {
+        if ($this->isLoadMore) {
             $this->loadMoreTrait();
             return;
         }

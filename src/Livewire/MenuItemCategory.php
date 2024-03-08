@@ -9,19 +9,22 @@ use Sokeio\Menu\MenuItemBuilder;
 
 class MenuItemCategory extends FormMenu
 {
-    public static function RenderItem(MenuItemBuilder $item)
+    public static function renderItem(MenuItemBuilder $item)
     {
-        echo  view_scope('sokeio::menu.item.link', ['item' => $item, 'link' => Catalog::find($item->getValueBlogData())?->getSeoCanonicalUrl()])->render();
+        echo  view_scope('sokeio::menu.item.link', [
+            'item' => $item,
+            'link' => Catalog::find($item->getValueBlogData())?->getSeoCanonicalUrl()
+        ])->render();
     }
-    public static function getMenuName()
+    public static function getMenuName(): string
     {
         return __('Catagory');
     }
-    public static function getMenuType()
+    public static function getMenuType(): string
     {
         return 'MenuItemCategory';
     }
-    public function SearchCatagory($text)
+    public function searchCatagory($text)
     {
         $this->skipRender();
         return Catalog::query()->where('name', 'like', '%' . $text . '%')->limit(20)->get(['id', 'name']);
@@ -29,9 +32,10 @@ class MenuItemCategory extends FormMenu
     protected function MenuUI()
     {
         return [
-            UI::SelectWithSearch('data')->Label(__('Catagory'))->required()->SearchDataSource('SearchCatagory')->DataSource(function () {
-                return $this->SearchCatagory('');
-            }),
+            UI::selectWithSearch('data')->label(__('Catagory'))->required()
+                ->searchFn('searchCatagory')->dataSource(function () {
+                    return $this->SearchCatagory('');
+                }),
         ];
     }
 }
