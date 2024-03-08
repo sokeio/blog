@@ -1,6 +1,6 @@
 <div class="page page-center">
     <div class="container container-tight py-4">
-        <form class="card card-md" wire:submit.prevent='DoWork()' autocomplete="off" novalidate>
+        <form class="card card-md" wire:submit.prevent='doWork()' autocomplete="off" novalidate>
             <div class="card-body">
                 <h2 class="card-title text-center mb-4">Register Account</h2>
                 <div class="mb-3">

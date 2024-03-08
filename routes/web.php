@@ -15,6 +15,6 @@ use Sokeio\Blog\Livewire\CatalogPageView;
 use Sokeio\Blog\Livewire\PostPageView;
 use Sokeio\Blog\Livewire\TagPageView;
 
-permalink_route('post_permalink', 'post/{post}', PostPageView::class, 'post.slug');
-permalink_route('catalog_permalink', 'catalog/{catalog}', CatalogPageView::class, 'catalog.slug');
-permalink_route('tag_permalink', 'tag/{tag}', TagPageView::class, 'tag.slug');
+permalinkRoute('post_permalink', 'post/{post}', PostPageView::class, 'post.slug');
+permalinkRoute('catalog_permalink', 'catalog/{catalog}', CatalogPageView::class, 'catalog.slug');
+permalinkRoute('tag_permalink', 'tag/{tag}', TagPageView::class, 'tag.slug');

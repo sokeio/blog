@@ -10,44 +10,44 @@ class Option
 {
     use WithOption;
     // Only Theme Site
-    public static function SetupOption()
+    public static function setupOption()
     {
         // Run when activating
-        theme_option()->optionUI([
-            UI::Tab()
+        themeOption()->optionUI([
+            UI::tab()
                 ->addTab(Tab::TabItem('General'), [
-                    UI::Row([
-                        UI::Column6([
-                            UI::Text('site_name')->Label(__('Site Name')),
+                    UI::row([
+                        UI::column6([
+                            UI::text('site_name')->label(__('Site Name')),
                         ]),
-                        UI::Column6([
-                            UI::Image('site_logo')->Label(__('Site Logo')),
+                        UI::column6([
+                            UI::image('site_logo')->label(__('Site Logo')),
                         ])
                     ])
 
                 ])->addTab(Tab::TabItem('Footer'), [
-                    UI::Color('footer_color')->Label(__('Color Footer')),
-                    UI::Row([
-                        UI::Column3([
-                            UI::Text('footer_column_title1')->Label(__('Footer column 1')),
+                    UI::color('footer_color')->label(__('Color Footer')),
+                    UI::row([
+                        UI::column3([
+                            UI::text('footer_column_title1')->label(__('Footer column 1')),
                         ]),
-                        UI::Column3([
-                            UI::Text('footer_column_title2')->Label(__('Footer column 2')),
+                        UI::column3([
+                            UI::text('footer_column_title2')->label(__('Footer column 2')),
                         ]),
-                        UI::Column3([
-                            UI::Text('footer_column_title3')->Label(__('Footer column 3')),
+                        UI::column3([
+                            UI::text('footer_column_title3')->label(__('Footer column 3')),
                         ]),
-                        UI::Column3([
-                            UI::Text('footer_column_title4')->Label(__('Footer column 4')),
+                        UI::column3([
+                            UI::text('footer_column_title4')->label(__('Footer column 4')),
                         ]),
                     ]),
-                    UI::Tinymce('footer_about')->Label(__('Footer About')),
+                    UI::tinymce('footer_about')->label(__('Footer About')),
 
                 ])->addTab(Tab::TabItem('Header'), [
-                    UI::Color('header_color')->Label(__('Color Header')),
+                    UI::color('header_color')->label(__('Color Header')),
                 ])->addTab(Tab::TabItem('Customize'), [
-                    UI::Textarea('custom_css')->Label(__('Custom CSS')),
-                    UI::Textarea('custom_js')->Label(__('Custom JS')),
+                    UI::textarea('custom_css')->label(__('Custom CSS')),
+                    UI::textarea('custom_js')->label(__('Custom JS')),
                 ]),
 
         ]);

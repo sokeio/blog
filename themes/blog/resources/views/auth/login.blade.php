@@ -5,7 +5,7 @@
         <div class="card card-md">
             <div class="card-body">
                 <h2 class="h2 text-center mb-4">Login</h2>
-                <form wire:submit.prevent='DoWork()' autocomplete="off" novalidate>
+                <form wire:submit.prevent='doWork()' autocomplete="off" novalidate>
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
                         <input wire:model='username' type="email" class="form-control" placeholder="your@email.com"

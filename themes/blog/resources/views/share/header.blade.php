@@ -2,7 +2,7 @@
     @php
         do_action('theme::share.header.before');
     @endphp
-    <header class="navbar navbar-expand-md d-print-none {!! theme_option('header_color') !!}">
+    <header class="navbar navbar-expand-md d-print-none {!! themeOption('header_color') !!}">
         <div class="container-xl">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
                 aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,11 +10,11 @@
             </button>
             <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                 <a href="{{ url('/') }}">
-                    @if ($logo = theme_option('site_logo'))
+                    @if ($logo = themeOption('site_logo'))
                         <img src="{{ $logo }}" width="110" height="32"
-                            alt="{{ theme_option('site_name', 'Tools') }}" class="navbar-brand-image">
+                            alt="{{ themeOption('site_name', 'Tools') }}" class="navbar-brand-image">
                     @else
-                        <span class="fw-bold fs-3">{{ theme_option('site_name', 'Tools') }}</span>
+                        <span class="fw-bold fs-3">{{ themeOption('site_name', 'Tools') }}</span>
                     @endif
                 </a>
             </h1>
@@ -44,7 +44,7 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <div
                     class="d-flex flex-column dropdown-hover flex-md-row flex-fill align-items-stretch align-items-md-center">
-                    {!! theme_position('menu_main') !!}
+                    {!! themePosition('menu_main') !!}
                 </div>
             </div>
         </div>

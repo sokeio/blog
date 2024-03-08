@@ -6,17 +6,17 @@
     @ThemeHead(after)
     @stack('styles')
     <style type="text/css">
-        {!! theme_option('custom_css') !!}
+        {!! themeOption('custom_css') !!}
     </style>
 </head>
 
-<body class="{{ theme_class() }}" :class="themeDark && 'theme-dark'" x-data="{ themeDark: false }">
+<body class="{{ themeClass() }}" :class="themeDark && 'theme-dark'" x-data="{ themeDark: false }">
     @ThemeBody(before)
     @yield('content')
     @ThemeBody(after)
     @stack('scripts')
     <script type="text/javascript">
-        {!! theme_option('custom_js') !!}
+        {!! themeOption('custom_js') !!}
     </script>
 </body>
 

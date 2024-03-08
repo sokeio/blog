@@ -21,9 +21,9 @@ class PostTable extends Table
     protected function searchUI()
     {
         return [
-            UI::Row([
-                UI::Column4([
-                    UI::Select('catalogs.id')->Label(__('Category'))->DataSource(function () {
+            UI::row([
+                UI::column4([
+                    UI::select('catalogs.id')->label(__('Category'))->dataSource(function () {
                         return [
                             [
                                 'id' => '',
@@ -44,34 +44,34 @@ class PostTable extends Table
     protected function getButtons()
     {
         return apply_filters('CMS_POST_BUTTONS', [
-            UI::ButtonCreate(__('Create'))->ModalRoute($this->getRoute() . '.add')->ModalTitle(__('Create Data'))->ModalFullscreen(),
-            UI::Button(__('Create With Builder'))->Link(function () {
-                if (!post_with_builder()) {
+            UI::buttonCreate(__('Create'))->modalRoute($this->getRoute() . '.add')->modalTitle(__('Create Data'))->modalFullscreen(),
+            UI::button(__('Create With Builder'))->Link(function () {
+                if (!postWithBuilder()) {
                     return '#';
                 }
                 return route('admin.post.create-builder');
             })->When(function () {
-                return post_with_builder();
+                return postWithBuilder();
             }),
         ]);
     }
     protected function getTableActions()
     {
         return apply_filters('CMS_POST_TABLE_ACTIONS', [
-            UI::ButtonEdit(__('Edit'))->ModalRoute($this->getRoute() . '.edit', function ($row) {
+            UI::buttonEdit(__('Edit'))->modalRoute($this->getRoute() . '.edit', function ($row) {
                 return [
                     'dataId' => $row->id
                 ];
-            })->ModalTitle(__('Edit Data'))->ModalFullscreen(),
-            UI::Button(__('Edit With Builder'))->Link(function ($item) {
-                if (!post_with_builder()) {
+            })->modalTitle(__('Edit Data'))->modalFullscreen(),
+            UI::button(__('Edit With Builder'))->Link(function ($item) {
+                if (!postWithBuilder()) {
                     return '#';
                 }
                 return route('admin.post.edit-builder', ['dataId' => $item->getDataItem()->id]);
             })->When(function () {
-                return post_with_builder();
+                return postWithBuilder();
             }),
-            UI::ButtonRemove(__('Remove'))->Confirm(__('Do you want to delete this record?'), 'Confirm')->WireClick(function ($item) {
+            UI::buttonRemove(__('Remove'))->confirm(__('Do you want to delete this record?'), 'Confirm')->wireClick(function ($item) {
                 return 'doRemove(' . $item->getDataItem()->id . ')';
             })
         ]);
@@ -84,18 +84,18 @@ class PostTable extends Table
     public function getColumns()
     {
         return [
-            UI::Text('name')->Label(__('Title'))->FieldValue(function ($item) {
+            UI::text('name')->label(__('Title'))->fieldValue(function ($item) {
                 return  "<a href='" . $item->getSeoCanonicalUrl() . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
             }),
-            UI::Text('catalogs')->Label(__('Category'))->NoSort()->FieldValue(function ($item) {
+            UI::text('catalogs')->label(__('Category'))->NoSort()->fieldValue(function ($item) {
                 if (!$item->catalogs || count($item->catalogs) == 0) {
                     return __('None');
                 }
                 return $item->catalogs->pluck('name')->implode(', ');
             }),
-            UI::Text('status')->Label(__('Status'))->NoSort(),
-            UI::Text('created_at')->Label(__('Created At')),
-            UI::Text('updated_at')->Label(__('Updated At')),
+            UI::text('status')->label(__('Status'))->NoSort(),
+            UI::text('created_at')->label(__('Created At')),
+            UI::text('updated_at')->label(__('Updated At')),
         ];
     }
 }

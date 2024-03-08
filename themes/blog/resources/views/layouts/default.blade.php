@@ -6,11 +6,11 @@
     @ThemeHead(after)
     @stack('styles')
     <style type="text/css">
-        {!! theme_option('custom_css') !!}
+        {!! themeOption('custom_css') !!}
     </style>
 </head>
 
-<body class="{{ theme_class() }}">
+<body class="{{ themeClass() }}">
     @ThemeBody(before)
     <div class="page">
         @include('theme::share.header')
@@ -33,7 +33,7 @@
     @stack('scripts')
     </div>
     <script type="text/javascript">
-        {!! theme_option('custom_js') !!}
+        {!! themeOption('custom_js') !!}
     </script>
 </body>
 

@@ -1,7 +1,7 @@
 @php
 // seo()->title(__('tools::seo.title.homepage')); 
 @endphp
-@extends(theme_layout())
+@extends(themeLayout())
 @section('content')
     [tools::search-box /]
     <div class="container">

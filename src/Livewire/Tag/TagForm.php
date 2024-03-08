@@ -28,21 +28,21 @@ class TagForm extends Form
         return Tag::class;
     }
 
-    public function FormUI()
+    public function formUI()
     {
-        return UI::Container([
-            UI::Prex(
+        return UI::container([
+            UI::prex(
                 'data',
                 [
-                    UI::Hidden('author_id')->ValueDefault(auth()->user()->id),
-                    UI::Row([
-                        UI::Column12([
-                            UI::Text('name')->Label(__('Title'))->required(),
-                            UI::Text('slug')->Label(__('Slug')),
-                            UI::Image('image')->Label(__('Image')),
-                            UI::Row([
-                                UI::Column6([
-                                    UI::Select('status')->Label(__('Status'))->DataSource(function () {
+                    UI::hidden('author_id')->valueDefault(auth()->user()->id),
+                    UI::row([
+                        UI::column12([
+                            UI::text('name')->label(__('Title'))->required(),
+                            UI::text('slug')->label(__('Slug')),
+                            UI::image('image')->label(__('Image')),
+                            UI::row([
+                                UI::column6([
+                                    UI::select('status')->label(__('Status'))->dataSource(function () {
                                         return [
                                             [
                                                 'id' => 'draft',
@@ -53,10 +53,10 @@ class TagForm extends Form
                                                 'name' => __('Published')
                                             ]
                                         ];
-                                    })->ValueDefault('published'),
+                                    })->valueDefault('published'),
                                 ]),
-                                UI::Column6([
-                                    UI::Select('layout')->Label(__('Layout'))->DataSource(function () {
+                                UI::column6([
+                                    UI::select('layout')->label(__('Layout'))->dataSource(function () {
                                         return [
                                             [
                                                 'id' => 'default',
@@ -70,12 +70,12 @@ class TagForm extends Form
                                     }),
                                 ])
                             ]),
-                            UI::Textarea('description')->Label(__('Description')),
+                            UI::textarea('description')->label(__('Description')),
                         ])
                     ]),
                 ]
             )
         ])
-            ->ClassName('p-3');
+            ->className('p-3');
     }
 }

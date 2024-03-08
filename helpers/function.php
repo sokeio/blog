@@ -1,9 +1,9 @@
 <?php
 
 //code php
-if (!function_exists('post_with_builder')) {
-    function post_with_builder()
+if (!function_exists('postWithBuilder')) {
+    function postWithBuilder()
     {
-        return function_exists('module_active') && !!module_active('builder');
+        return function_exists('moduleIsActive') && !!moduleIsActive('builder');
     }
 }

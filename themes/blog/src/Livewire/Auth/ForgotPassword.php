@@ -15,7 +15,7 @@ class ForgotPassword extends Component
         'password' => 'required|min:1',
         'username' => 'required|min:1',
     ];
-    public function DoWork()
+    public function doWork()
     {
         $this->validate();
         if (Auth::attempt(['email' => $this->username, 'password' => $this->password], $this->isRememberMe)) {
