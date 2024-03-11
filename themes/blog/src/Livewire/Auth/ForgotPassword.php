@@ -4,6 +4,7 @@ namespace SokeioTheme\Blog\Livewire\Auth;
 
 use Sokeio\Component;
 use Illuminate\Support\Facades\Auth;
+use Sokeio\Facades\Assets;
 
 class ForgotPassword extends Component
 {
@@ -26,11 +27,10 @@ class ForgotPassword extends Component
     }
     public function mount()
     {
+        Assets::setTitle(__('Forgot password'));
     }
     public function render()
     {
-        return view_scope('theme::auth.forgot-password',[
-            'page_title'=>__('Forgot password')
-        ]);
+        return view_scope('theme::auth.forgot-password');
     }
 }

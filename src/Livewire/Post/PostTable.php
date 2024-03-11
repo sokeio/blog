@@ -50,7 +50,7 @@ class PostTable extends Table
                     return '#';
                 }
                 return route('admin.post.create-builder');
-            })->When(function () {
+            })->when(function () {
                 return postWithBuilder();
             }),
         ]);
@@ -68,7 +68,7 @@ class PostTable extends Table
                     return '#';
                 }
                 return route('admin.post.edit-builder', ['dataId' => $item->getDataItem()->id]);
-            })->When(function () {
+            })->when(function () {
                 return postWithBuilder();
             }),
             UI::buttonRemove(__('Remove'))->confirm(__('Do you want to delete this record?'), 'Confirm')->wireClick(function ($item) {

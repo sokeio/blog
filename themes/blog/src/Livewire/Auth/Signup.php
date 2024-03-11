@@ -3,6 +3,7 @@
 namespace SokeioTheme\Blog\Livewire\Auth;
 
 use Sokeio\Component;
+use Sokeio\Facades\Assets;
 
 class Signup extends Component
 {
@@ -27,18 +28,18 @@ class Signup extends Component
         $user->save();
         if ($role = env('SOKEIO_SIGUP_ROLE_DEFAULT')) {
             $role =   (config('sokeio.model.role'))::where('slug', $role)->first();
-            if ($role)
+            if ($role) {
                 $user->roles()->sync([$role->id]);
+            }
         }
         return redirect(route('site.login'));
     }
     public function mount()
     {
+        Assets::setTitle(__('Sigup account'));
     }
     public function render()
     {
-        return view_scope('theme::auth.sign-up', [
-            'page_title' => __('Sigup account')
-        ]);
+        return view_scope('theme::auth.sign-up');
     }
 }

@@ -25,13 +25,6 @@ class BlogServiceProvider extends ServiceProvider
             ->hasTranslations()
             ->runsMigrations();
     }
-    public function extending()
-    {
-    }
-    public function packageRegistered()
-    {
-        $this->extending();
-    }
     private function bootGate()
     {
         if (!$this->app->runningInConsole()) {
