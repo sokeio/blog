@@ -76,15 +76,16 @@ class PostForm extends Form
                 ->toArray()
         );
     }
-    protected function footerUI()
-    {
-        return null;
-    }
+    
     public function TagSearch($keyword)
     {
         return Tag::where('name', 'like', '%' . $keyword . '%')->get()->map(function ($item) {
             return ['value' => $item->name, 'id' => $item->id];
         });
+    }
+    protected function footerUI()
+    {
+        return null;
     }
     public function formUI()
     {
