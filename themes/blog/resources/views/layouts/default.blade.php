@@ -20,7 +20,7 @@
         <div class="page-wrapper">
             <!-- Page body -->
             <div class="page-body p-0 m-0">
-                {!! breadcrumb()->ClassBox('container pt-3') !!}
+                {!! breadcrumb()->classBox('container pt-3') !!}
                 @yield('content')
             </div>
         </div>

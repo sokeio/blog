@@ -4,30 +4,18 @@ namespace Sokeio\Blog\Livewire;
 
 use Sokeio\Blog\Models\Post;
 use Sokeio\Component;
-use Sokeio\Facades\Assets;
-use Sokeio\Facades\Theme;
 
 class PostPageView extends Component
 {
     public Post $post;
     public function mount()
     {
-        if ($this->post->layout) {
-            Theme::setLayout($this->post->layout);
-        }
-        if ($this->post->css)
-            Assets::AddStyle($this->post->css ?? '');
-        if ($this->post->custom_css)
-            Assets::AddStyle($this->post->custom_css ?? '');
-        if ($this->post->js)
-            Assets::AddScript($this->page->js ?? '');
-        if ($this->post->custom_js)
-            Assets::AddScript($this->post->custom_js ?? '');
-        Assets::setTitle($this->post->name);
-        SeoHelper()->for($this->post);
+        breadcrumb()->add(__('Home'), url(''));
+        $this->post->setAssets();
     }
     public function render()
     {
-        return view_scope('blog::post-page-view', ['post' => $this->post]);
+
+        return view_scope('blog::post.' . $this->post->view_layout, ['post' => $this->post], 'blog::post.default');
     }
 }

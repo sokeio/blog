@@ -8,7 +8,7 @@ use Sokeio\Breadcrumb;
 use Sokeio\Blog\Models\Catalog;
 use Sokeio\Blog\Models\Post;
 use Sokeio\Blog\Models\Tag;
-
+use Sokeio\Components\Common\Div;
 
 class PostForm extends Form
 {
@@ -46,7 +46,7 @@ class PostForm extends Form
     }
     protected function saveAfter($post)
     {
-     
+
         $tagIds = collect(json_decode($this->tagIds, true))->map(function ($item) {
             if (isset($item['id'])) {
                 return $item['id'];
@@ -76,9 +76,10 @@ class PostForm extends Form
                 ->toArray()
         );
     }
-    
+
     public function TagSearch($keyword)
     {
+        $this->skipRender();
         return Tag::where('name', 'like', '%' . $keyword . '%')->get()->map(function ($item) {
             return ['value' => $item->name, 'id' => $item->id];
         });
@@ -138,6 +139,22 @@ class PostForm extends Form
                                     ],
                                 ];
                             }),
+                            UI::select('view_layout')->label(__('View Layout'))->dataSource(function () {
+                                return apply_filters('POST_VIEW_LAYOUT', [
+                                    [
+                                        'id' => 'default',
+                                        'name' => __('Default')
+                                    ],
+                                    [
+                                        'id' => 'right',
+                                        'name' => __('Right')
+                                    ],
+                                    [
+                                        'id' => 'left',
+                                        'name' => __('Left')
+                                    ],
+                                ]);
+                            })->valueDefault('default'),
                             UI::button(__('Save article'))->wireClick('doSave()')->className('w-100 mb-2'),
                         ]),
                     ]),

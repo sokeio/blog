@@ -3,13 +3,18 @@
 namespace Sokeio\Blog\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Sokeio\Comment\Concerns\Actionable;
 use Sokeio\Comment\Concerns\Commentable;
+use Sokeio\Comment\Concerns\Rateable;
+use Sokeio\Comment\Concerns\Viewable;
+use Sokeio\Concerns\WithModelAssets;
 use Sokeio\Concerns\WithSlug;
 use Sokeio\Seo\HasSEO;
 
 class Post extends Model
 {
-    use WithSlug, HasSEO, Commentable;
+    use WithSlug, HasSEO, Commentable, Viewable, Rateable, Actionable;
+    use WithModelAssets;
     public function getSeoCanonicalUrl()
     {
         return route('post.slug', ['post' => $this->slug]);

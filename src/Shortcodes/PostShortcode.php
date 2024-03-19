@@ -17,11 +17,11 @@ class PostShortcode extends Component
     }
     public static function getTitle()
     {
-        return __('blog::shortcode.post');
+        return __('blog::shortcode.posts');
     }
     public static function getKey()
     {
-        return 'blog::post';
+        return 'blog::posts';
     }
     public static function getParamUI()
     {
@@ -41,11 +41,13 @@ class PostShortcode extends Component
             }),
             UI::text('classItem')->label(__('Class Item'))
                 ->NoSort()->valueDefault('col-lg-4 col-md-6 col-sm-12 col-xs-12'),
+            UI::number('postId')->label(__('Post Id'))->NoSort(),
             UI::number('limit')->label(__('Limit'))->NoSort(),
             UI::checkBox('isLoadMore')->label(__('Use Load More'))->NoSort(),
             UI::checkBox('isContainer')->label(__('Use Container'))->NoSort(),
         ];
     }
+    public $postId;
     public $title;
     public $orderby;
     public $limit;
@@ -53,7 +55,7 @@ class PostShortcode extends Component
     public $isLoadMore;
     public $keywords;
     public $catalogId;
-    public $classItem;
+    public $classItem = 'col-lg-3 col-md-4 col-sm-6 col-xs-12';
     protected function getQuery()
     {
         $query = Post::query();
