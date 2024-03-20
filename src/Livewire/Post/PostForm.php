@@ -140,7 +140,7 @@ class PostForm extends Form
                                 ];
                             }),
                             UI::select('view_layout')->label(__('View Layout'))->dataSource(function () {
-                                return apply_filters('POST_VIEW_LAYOUT', [
+                                return applyFilters('POST_VIEW_LAYOUT', [
                                     [
                                         'id' => 'default',
                                         'name' => __('Default')

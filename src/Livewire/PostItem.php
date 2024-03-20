@@ -10,6 +10,6 @@ class PostItem extends Component
     public Post $post;
     public function render()
     {
-        return view_scope('blog::post-item-view');
+        return viewScope('blog::post-item-view');
     }
 }

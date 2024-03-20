@@ -40,6 +40,6 @@ class Signup extends Component
     }
     public function render()
     {
-        return view_scope('theme::auth.sign-up');
+        return viewScope('theme::auth.sign-up');
     }
 }

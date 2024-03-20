@@ -28,6 +28,6 @@ class TagPageView extends Component
     }
     public function render()
     {
-        return view_scope('blog::tag-page-view', ['tag' => $this->tag]);
+        return viewScope('blog::tag-page-view', ['tag' => $this->tag]);
     }
 }

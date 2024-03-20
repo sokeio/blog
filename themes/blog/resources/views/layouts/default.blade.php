@@ -15,7 +15,7 @@
     <div class="page">
         @include('theme::share.header')
         @php
-            do_action('theme::body.before');
+            doAction('theme::body.before');
         @endphp
         <div class="page-wrapper">
             <!-- Page body -->
@@ -25,7 +25,7 @@
             </div>
         </div>
         @php
-            do_action('theme::body.before');
+            doAction('theme::body.before');
         @endphp
         @include('theme::share.footer')
     </div>

@@ -1,6 +1,6 @@
 <div class="sticky-top ">
     @php
-        do_action('theme::share.header.before');
+        doAction('theme::share.header.before');
     @endphp
     <header class="navbar navbar-expand-md d-print-none {!! themeOption('header_color') !!}">
         <div class="container-xl">
@@ -50,6 +50,6 @@
         </div>
     </header>
     @php
-        do_action('theme::share.header.before');
+        doAction('theme::share.header.before');
     @endphp
 </div>

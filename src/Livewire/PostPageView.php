@@ -15,7 +15,6 @@ class PostPageView extends Component
     }
     public function render()
     {
-
-        return view_scope('blog::post.' . $this->post->view_layout, ['post' => $this->post], 'blog::post.default');
+        return viewScope('blog::post.' . $this->post->view_layout, ['post' => $this->post], 'blog::post.default');
     }
 }

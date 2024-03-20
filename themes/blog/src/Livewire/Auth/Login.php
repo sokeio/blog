@@ -34,6 +34,6 @@ class Login extends Component
     }
     public function render()
     {
-        return view_scope('theme::auth.login');
+        return viewScope('theme::auth.login');
     }
 }

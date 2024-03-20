@@ -31,6 +31,6 @@ class ForgotPassword extends Component
     }
     public function render()
     {
-        return view_scope('theme::auth.forgot-password');
+        return viewScope('theme::auth.forgot-password');
     }
 }

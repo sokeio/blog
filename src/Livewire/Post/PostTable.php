@@ -43,7 +43,7 @@ class PostTable extends Table
     }
     protected function getButtons()
     {
-        return apply_filters('CMS_POST_BUTTONS', [
+        return applyFilters('CMS_POST_BUTTONS', [
             UI::buttonCreate(__('Create'))->modalRoute($this->getRoute() . '.add')->modalTitle(__('Create Data'))->modalFullscreen(),
             UI::button(__('Create With Builder'))->Link(function () {
                 if (!postWithBuilder()) {
@@ -57,7 +57,7 @@ class PostTable extends Table
     }
     protected function getTableActions()
     {
-        return apply_filters('CMS_POST_TABLE_ACTIONS', [
+        return applyFilters('CMS_POST_TABLE_ACTIONS', [
             UI::buttonEdit(__('Edit'))->modalRoute($this->getRoute() . '.edit', function ($row) {
                 return [
                     'dataId' => $row->id

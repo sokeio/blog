@@ -11,7 +11,10 @@ class MenuItemPost extends FormMenu
 {
     public static function renderItem(MenuItemBuilder $item)
     {
-        echo  view_scope('sokeio::menu.item.link', ['item' => $item, 'link' => Post::find($item->getValueBlogData())?->getSeoCanonicalUrl()])->render();
+        echo  viewScope('sokeio::menu.item.link', [
+            'item' => $item,
+            'link' => Post::find($item->getValueBlogData())?->getSeoCanonicalUrl()
+        ])->render();
     }
     public static function getMenuName()
     {
@@ -21,17 +24,19 @@ class MenuItemPost extends FormMenu
     {
         return 'MenuItemPost';
     }
-    public function SearchPosts($text)
-    {
-        $this->skipRender();
-        return Post::query()->where('name', 'like', '%' . $text . '%')->limit(20)->get(['id', 'name']);
-    }
     protected function MenuUI()
     {
         return [
-            UI::selectWithSearch('data')->label(__('Post'))->required()->searchFn('SearchPosts')->dataSource(function () {
-                return $this->SearchPosts('');
-            }),
+            UI::selectWithSearch('data')->label(__('Post'))
+                ->required()
+                ->searchFn('SearchPosts')
+                ->actionUI('SearchPosts', function ($component, $text) {
+                    $component->skipRender();
+                    return Post::query()->where('name', 'like', '%' . $text . '%')->limit(20)->get(['id', 'name']);
+                })
+                ->dataSource(function () {
+                    return $this->SearchPosts('');
+                }),
         ];
     }
 }
