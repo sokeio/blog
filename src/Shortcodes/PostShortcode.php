@@ -41,6 +41,7 @@ class PostShortcode extends Component
             }),
             UI::text('classItem')->label(__('Class Item'))
                 ->NoSort()->valueDefault('col-lg-4 col-md-6 col-sm-12 col-xs-12'),
+            UI::number('catalogId')->label(__('Catalog Id'))->NoSort(),
             UI::number('postId')->label(__('Post Id'))->NoSort(),
             UI::number('limit')->label(__('Limit'))->NoSort(),
             UI::checkBox('isLoadMore')->label(__('Use Load More'))->NoSort(),
@@ -79,7 +80,9 @@ class PostShortcode extends Component
             }
         }
         if ($this->catalogId) {
-            $query->where('catalogId', $this->catalogId);
+            $query->whereHas('catalogs', function ($query) {
+                $query->where('catalog_id', $this->catalogId);
+            });
         }
         if ($this->keywords) {
             $arrKeywords = explode(',', $this->keywords);

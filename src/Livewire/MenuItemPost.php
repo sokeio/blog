@@ -35,7 +35,7 @@ class MenuItemPost extends FormMenu
                     return Post::query()->where('name', 'like', '%' . $text . '%')->limit(20)->get(['id', 'name']);
                 })
                 ->dataSource(function () {
-                    return $this->SearchPosts('');
+                    return Post::query()->limit(20)->get(['id', 'name']);
                 }),
         ];
     }
