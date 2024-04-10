@@ -40,5 +40,12 @@
     "Catagory": "Catagory",
     "blog::shortcode.post": "blog::shortcode.post",
     "Keywords(comma separated)": "Keywords(comma separated)",
-    "Class Item": "Class Item"
+    "Class Item": "Class Item",
+    "Post Related": "Post Related",
+    "blog::shortcode.posts": "blog::shortcode.posts",
+    "Catalog Id": "Catalog Id",
+    "Post Id": "Post Id",
+    "View Layout": "View Layout",
+    "Right": "Right",
+    "Left": "Left"
 }
