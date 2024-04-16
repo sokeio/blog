@@ -41,34 +41,31 @@ class TagForm extends Form
                             UI::text('slug')->label(__('Slug')),
                             UI::image('image')->label(__('Image')),
                             UI::row([
-                                UI::column6([
-                                    UI::select('status')->label(__('Status'))->dataSource(function () {
-                                        return [
-                                            [
-                                                'id' => 'draft',
-                                                'name' => __('Draft')
-                                            ],
-                                            [
-                                                'id' => 'published',
-                                                'name' => __('Published')
-                                            ]
-                                        ];
-                                    })->valueDefault('published'),
-                                ]),
-                                UI::column6([
-                                    UI::select('layout')->label(__('Layout'))->dataSource(function () {
-                                        return [
-                                            [
-                                                'id' => 'default',
-                                                'name' => __('Default')
-                                            ],
-                                            [
-                                                'id' => 'none',
-                                                'name' => __('None')
-                                            ],
-                                        ];
-                                    }),
-                                ])
+                                UI::select('status')->label(__('Status'))->dataSource(function () {
+                                    return [
+                                        [
+                                            'id' => 'draft',
+                                            'name' => __('Draft')
+                                        ],
+                                        [
+                                            'id' => 'published',
+                                            'name' => __('Published')
+                                        ]
+                                    ];
+                                })->valueDefault('published')->col6(),
+
+                                UI::select('layout')->label(__('Layout'))->dataSource(function () {
+                                    return [
+                                        [
+                                            'id' => 'default',
+                                            'name' => __('Default')
+                                        ],
+                                        [
+                                            'id' => 'none',
+                                            'name' => __('None')
+                                        ],
+                                    ];
+                                })->col6(),
                             ]),
                             UI::textarea('description')->label(__('Description')),
                         ])
