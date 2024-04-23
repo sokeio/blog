@@ -117,6 +117,7 @@ class PostForm extends Form
                                     ]
                                 ];
                             })->valueDefault('published'),
+                            UI::datePicker('published_at')->label(__('Published At')),
                             UI::image('image')->label(__('Image')),
                             UI::checkBoxMutil('categoryIds')->prex('')->label(__('Category'))->dataSource(function () {
                                 return Catalog::query()->where('status', 'published')->get();
