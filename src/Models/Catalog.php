@@ -20,7 +20,7 @@ class Catalog extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'title',
         'slug',
         'description',
         'image',

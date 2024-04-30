@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 255);
-            $table->string('slug', 500);
             $table->string('description', 400)->nullable();
             $table->longText('content')->nullable();
             $table->string('status', 60)->default('published');
@@ -36,7 +35,6 @@ return new class extends Migration
         Schema::create('catalogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 255);
-            $table->string('slug', 500);
             $table->integer('parent_id')->unsigned()->default(0);
             $table->string('description', 400)->nullable();
             $table->string('image', 255)->nullable();
@@ -54,7 +52,6 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->string('slug', 500);
             $table->string('image', 255)->nullable();
             $table->string('view_layout')->nullable();
             $table->integer('author_id');

@@ -15,8 +15,7 @@ class Tag extends Model
         return route('tag.slug', ['tag' => $this->slug]);
     }
     protected $fillable = [
-        'name',
-        'slug',
+        'title',
         'description',
         'image',
         'views',
