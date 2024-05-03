@@ -27,9 +27,9 @@ class PostTable extends Table
                         return [
                             [
                                 'id' => '',
-                                'name' => __('All')
+                                'title' => __('All')
                             ],
-                            ...Catalog::query()->where('status', 'published')->get(['id', 'name'])
+                            ...Catalog::query()->where('status', 'published')->get(['id', 'title'])->toArray()
                         ];
                     }),
                 ])

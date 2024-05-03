@@ -62,7 +62,7 @@ class CatalogShortcode extends Component
         if ($this->keywords) {
             $arrKeywords = explode(',', $this->keywords);
             foreach ($arrKeywords as $key) {
-                $query->orWhere('name', 'like', '%' . $key . '%');
+                $query->orWhere('title', 'like', '%' . $key . '%');
                 $query->orWhere('description', 'like', '%' . $key . '%');
             }
         }

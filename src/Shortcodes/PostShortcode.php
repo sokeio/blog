@@ -30,11 +30,11 @@ class PostShortcode extends Component
             UI::text('keywords')->label(__('Keywords(comma separated)'))->NoSort(),
             UI::select('catalogId')->label(__('Catalog'))->dataSource(function () {
                 return [
-                    ['id' => '', 'name' => __('All')],
+                    ['id' => '', 'title' => __('All')],
                     ...Catalog::all()->map(function ($item) {
                         return [
                             'id' => $item->id,
-                            'name' => $item->name
+                            'title' => $item->name
                         ];
                     })
                 ];
@@ -88,7 +88,7 @@ class PostShortcode extends Component
             $arrKeywords = explode(',', $this->keywords);
             $query->where(function ($query) use ($arrKeywords) {
                 foreach ($arrKeywords as $key) {
-                    $query->orWhere('name', 'like', '%' . $key . '%');
+                    $query->orWhere('title', 'like', '%' . $key . '%');
                     $query->orWhere('description', 'like', '%' . $key . '%');
                 }
             });

@@ -37,7 +37,7 @@ class TagForm extends Form
                     UI::hidden('author_id')->valueDefault(auth()->user()->id),
                     UI::row([
                         UI::column12([
-                            UI::text('name')->label(__('Title'))->required(),
+                            UI::text('title')->label(__('Title'))->required(),
                             UI::text('slug')->label(__('Slug')),
                             UI::image('image')->label(__('Image')),
                             UI::row([
@@ -45,11 +45,11 @@ class TagForm extends Form
                                     return [
                                         [
                                             'id' => 'draft',
-                                            'name' => __('Draft')
+                                            'title' => __('Draft')
                                         ],
                                         [
                                             'id' => 'published',
-                                            'name' => __('Published')
+                                            'title' => __('Published')
                                         ]
                                     ];
                                 })->valueDefault('published')->col6(),
@@ -58,11 +58,11 @@ class TagForm extends Form
                                     return [
                                         [
                                             'id' => 'default',
-                                            'name' => __('Default')
+                                            'title' => __('Default')
                                         ],
                                         [
                                             'id' => 'none',
-                                            'name' => __('None')
+                                            'title' => __('None')
                                         ],
                                     ];
                                 })->col6(),
