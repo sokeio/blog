@@ -39,7 +39,7 @@ class PostForm extends Form
         })->toArray();
         $this->tagIds = json_encode($post->tags()->get()->map(function ($item) {
             return [
-                'value' => $item->name,
+                'value' => $item->title,
                 'id' => $item->id
             ];
         })->toArray());
@@ -53,7 +53,7 @@ class PostForm extends Form
             }
 
             $tag = Tag::create([
-                'name' => is_string($item) ? $item : $item['value'],
+                'title' => is_string($item) ? $item : $item['value'],
                 'author_id' => auth()->user()->id
             ]);
             $tag->save();
@@ -97,7 +97,7 @@ class PostForm extends Form
                     UI::hidden('author_id')->valueDefault(auth()->user()->id),
                     UI::row([
                         UI::column8([
-                            UI::text('name')->label(__('Title'))->required(),
+                            UI::text('title')->label(__('Title'))->required(),
                             UI::text('slug')->label(__('Slug')),
                             UI::tinymce('content')->label(__('Blog'))->required(),
                             UI::textarea('description')->label(__('Description')),
@@ -109,11 +109,11 @@ class PostForm extends Form
                                 return [
                                     [
                                         'id' => 'draft',
-                                        'name' => __('Draft')
+                                        'title' => __('Draft')
                                     ],
                                     [
                                         'id' => 'published',
-                                        'name' => __('Published')
+                                        'title' => __('Published')
                                     ]
                                 ];
                             })->valueDefault('published'),
@@ -125,18 +125,18 @@ class PostForm extends Form
                             UI::tagify('tagIds')->prex('')->label(__('Tags'))->fieldOption(function () {
                                 return [
                                     'whitelistAction' => 'TagSearch',
-                                    'searchKeys' => ["name"]
+                                    'searchKeys' => ["title"]
                                 ];
                             })->noSave(),
                             UI::select('layout')->label(__('Layout'))->dataSource(function () {
                                 return [
                                     [
                                         'id' => 'default',
-                                        'name' => __('Default')
+                                        'title' => __('Default')
                                     ],
                                     [
                                         'id' => 'none',
-                                        'name' => __('None')
+                                        'title' => __('None')
                                     ],
                                 ];
                             }),
@@ -144,15 +144,15 @@ class PostForm extends Form
                                 return applyFilters('POST_VIEW_LAYOUT', [
                                     [
                                         'id' => 'default',
-                                        'name' => __('Default')
+                                        'title' => __('Default')
                                     ],
                                     [
                                         'id' => 'right',
-                                        'name' => __('Right')
+                                        'title' => __('Right')
                                     ],
                                     [
                                         'id' => 'left',
-                                        'name' => __('Left')
+                                        'title' => __('Left')
                                     ],
                                 ]);
                             })->valueDefault('default'),

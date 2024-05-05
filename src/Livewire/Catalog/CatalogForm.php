@@ -38,8 +38,7 @@ class CatalogForm extends Form
                     UI::hidden('author_id')->valueDefault(auth()->user()->id),
                     UI::row([
                         UI::column12([
-                            UI::text('name')->label(__('Title'))->required(),
-                            UI::text('slug')->label(__('Slug')),
+                            UI::text('title')->label(__('Title'))->required(),
                             UI::image('image')->label(__('Image')),
                             UI::row([
                                 UI::column6([
@@ -47,11 +46,11 @@ class CatalogForm extends Form
                                         return [
                                             [
                                                 'id' => 'draft',
-                                                'name' => __('Draft')
+                                                'title' => __('Draft')
                                             ],
                                             [
                                                 'id' => 'published',
-                                                'name' => __('Published')
+                                                'title' => __('Published')
                                             ]
                                         ];
                                     })->valueDefault('published'),
@@ -61,11 +60,11 @@ class CatalogForm extends Form
                                         return [
                                             [
                                                 'id' => 'default',
-                                                'name' => __('Default')
+                                                'title' => __('Default')
                                             ],
                                             [
                                                 'id' => 'none',
-                                                'name' => __('None')
+                                                'title' => __('None')
                                             ],
                                         ];
                                     }),

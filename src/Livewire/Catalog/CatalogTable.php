@@ -24,9 +24,7 @@ class CatalogTable extends Table
     public function getColumns()
     {
         return [
-            UI::text('name')->label(__('Name'))->fieldValue(function ($item) {
-                return  "<a href='" . $item->getSeoCanonicalUrl() . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
-            }),
+            UI::text('title')->label(__('Name'))->setLink(),
             UI::text('status')->label(__('Status'))->NoSort(),
             UI::text('created_at')->label(__('Created At')),
             UI::text('updated_at')->label(__('Updated At')),

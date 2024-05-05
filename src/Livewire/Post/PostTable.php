@@ -44,7 +44,8 @@ class PostTable extends Table
     protected function getButtons()
     {
         return applyFilters('CMS_POST_BUTTONS', [
-            UI::buttonCreate(__('Create'))->modalRoute($this->getRoute() . '.add')->modalTitle(__('Create Data'))->modalFullscreen(),
+            UI::buttonCreate(__('Create'))
+                ->modalRoute($this->getRoute() . '.add')->modalTitle(__('Create Data'))->modalFullscreen(),
             UI::button(__('Create With Builder'))->Link(function () {
                 if (!postWithBuilder()) {
                     return '#';
@@ -71,9 +72,10 @@ class PostTable extends Table
             })->when(function () {
                 return postWithBuilder();
             }),
-            UI::buttonRemove(__('Remove'))->confirm(__('Do you want to delete this record?'), 'Confirm')->wireClick(function ($item) {
-                return 'doRemove(' . $item->getDataItem()->id . ')';
-            })
+            UI::buttonRemove(__('Remove'))
+                ->confirm(__('Do you want to delete this record?'), 'Confirm')->wireClick(function ($item) {
+                    return 'doRemove(' . $item->getDataItem()->id . ')';
+                })
         ]);
     }
     protected function getQuery()
@@ -84,14 +86,12 @@ class PostTable extends Table
     public function getColumns()
     {
         return [
-            UI::text('name')->label(__('Title'))->fieldValue(function ($item) {
-                return  "<a href='" . $item->getSeoCanonicalUrl() . "' title='{$item->name}' target='_blank'>{$item->name}</a>";
-            }),
+            UI::text('title')->label(__('Title'))->setLink(),
             UI::text('catalogs')->label(__('Category'))->NoSort()->fieldValue(function ($item) {
                 if (!$item->catalogs || count($item->catalogs) == 0) {
                     return __('None');
                 }
-                return $item->catalogs->pluck('name')->implode(', ');
+                return $item->catalogs->pluck('title')->implode(', ');
             }),
             UI::text('status')->label(__('Status'))->NoSort(),
             UI::text('created_at')->label(__('Created At')),
