@@ -32,10 +32,10 @@ class MenuItemPost extends FormMenu
                 ->searchFn('SearchPosts')
                 ->actionUI('SearchPosts', function ($component, $text) {
                     $component->skipRender();
-                    return Post::query()->where('name', 'like', '%' . $text . '%')->limit(20)->get(['id', 'name']);
+                    return Post::query()->where('title', 'like', '%' . $text . '%')->limit(20)->get(['id', 'title']);
                 })
                 ->dataSource(function () {
-                    return Post::query()->limit(20)->get(['id', 'name']);
+                    return Post::query()->limit(20)->get(['id', 'title']);
                 }),
         ];
     }

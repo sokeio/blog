@@ -27,7 +27,7 @@ class MenuItemCategory extends FormMenu
     public function searchCatagory($text)
     {
         $this->skipRender();
-        return Catalog::query()->where('name', 'like', '%' . $text . '%')->limit(20)->get(['id', 'name']);
+        return Catalog::query()->where('title', 'like', '%' . $text . '%')->limit(20)->get(['id', 'title']);
     }
     protected function MenuUI()
     {
