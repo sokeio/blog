@@ -34,21 +34,18 @@ class PostShortcode extends Component
                     ...Catalog::all()->map(function ($item) {
                         return [
                             'id' => $item->id,
-                            'title' => $item->name
+                            'title' => $item->title
                         ];
                     })
                 ];
             }),
             UI::text('classItem')->label(__('Class Item'))
                 ->NoSort()->valueDefault('col-lg-4 col-md-6 col-sm-12 col-xs-12'),
-            UI::number('catalogId')->label(__('Catalog Id'))->NoSort(),
-            UI::number('postId')->label(__('Post Id'))->NoSort(),
             UI::number('limit')->label(__('Limit'))->NoSort(),
             UI::checkBox('isLoadMore')->label(__('Use Load More'))->NoSort(),
             UI::checkBox('isContainer')->label(__('Use Container'))->NoSort(),
         ];
     }
-    public $postId;
     public $title;
     public $orderby;
     public $limit;
