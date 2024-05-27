@@ -14,7 +14,7 @@ class CatalogShortcode extends Component
     use WithLoadMore {
         loadMore as loadMoreTrait;
     }
-    public static function getTitle()
+    public static function getShortcodeTitle()
     {
         return __('blog::shortcode.catalog');
     }
