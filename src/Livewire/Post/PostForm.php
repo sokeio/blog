@@ -96,15 +96,15 @@ class PostForm extends Form
                 [
                     UI::hidden('author_id')->valueDefault(auth()->user()->id),
                     UI::row([
-                        UI::column8([
+                        UI::column9([
                             UI::text('title')->label(__('Title'))->required(),
                             UI::text('slug')->label(__('Slug')),
-                            UI::tinymce('content')->label(__('Blog'))->required(),
+                            UI::tinymce('content')->label(__('Content'))->required(),
                             UI::textarea('description')->label(__('Description')),
                             UI::textarea('custom_js')->label(__('Custom Js')),
                             UI::textarea('custom_css')->label(__('Custom CSS')),
                         ]),
-                        UI::column4([
+                        UI::column3([
                             UI::select('status')->label(__('Status'))->dataSource(function () {
                                 return [
                                     [
