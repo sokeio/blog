@@ -1,0 +1,12 @@
+{
+    "id":"sokeio-blog",
+    "name": "Sokeio Blog",
+    "version":"v1.0.0",
+    "alias": "blog",
+    "description": "",
+    "keywords": [],
+    "priority": 200,
+    "aliases": {},
+    "namespace":"Sokeio\\Blog",
+    "requires": []
+}
