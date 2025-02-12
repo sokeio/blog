@@ -2,7 +2,7 @@
 
 namespace Sokeio\Blog\Page\Blog\Tag;
 
-use Sokeio\Content\Models\Tag;
+use Sokeio\Blog\Models\Tag;
 use Sokeio\Core\Attribute\AdminPageInfo;
 use Sokeio\Theme;
 use Sokeio\UI\Common\Button;
@@ -27,7 +27,7 @@ class Edit extends \Sokeio\Page
                 MediaFile::make('image')->label(__('Image')),
                 Textarea::make('description')->label(__('Description')),
                 Select::make('template')->label(__('Template'))->dataSource(Theme::getTemplateOptions())
-                    ->valueDefault('none')
+                    ->valueDefault('')
                     ->when(function (Select $field) {
                         return $field->checkDataSource();
                     }),

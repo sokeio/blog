@@ -3,8 +3,9 @@
 namespace Sokeio\Blog\Page\Blog\Post;
 
 use Carbon\Carbon;
-use Sokeio\Content\Models\Post;
+use Sokeio\Blog\Models\Post;
 use Sokeio\Core\Attribute\AdminPageInfo;
+use Sokeio\Page\Enums\PublishedType;
 use Sokeio\Platform;
 use Sokeio\Theme;
 use Sokeio\UI\Common\Div;
@@ -39,7 +40,7 @@ class Edit extends \Sokeio\Page
             if (is_numeric($item)) {
                 return $item;
             }
-            return \Sokeio\Content\Models\Tag::firstOrCreate([
+            return \Sokeio\Blog\Models\Tag::firstOrCreate([
                 'title' => $item,
                 'published' => 1
             ])->id;
@@ -72,24 +73,22 @@ class Edit extends \Sokeio\Page
                             )
                     ])->col9(),
                     Div::make([
-                        SwitchField::make('published')->label(__('Published'))
-                            ->valueDefault($this->dataId ?  null : 1)
-                            ->labelTrue(__('Active'))->labelFalse(__('Unactive')),
+                        Select::make('published_type')->dataSourceWithEnum(PublishedType::class)->label(__('Published'))->valueDefault(PublishedType::PUBLISHED->value),
                         DatePicker::make('published_at')->label(__('Published At'))->enableTime()
                             ->valueDefault(Carbon::now()->format('Y-m-d H:i:s')),
                         Select::make('catalogIds')->skipFill()->label(__('Catalog'))->multiple()
                             ->remoteActionWithModel(
-                                \Sokeio\Content\Models\Catalog::class,
+                                \Sokeio\Blog\Models\Catalog::class,
                                 'title'
                             ),
                         Select::make('tagIds')->skipFill()->label(__('Tag'))->multiple()
                             ->createItem()
                             ->remoteActionWithModel(
-                                \Sokeio\Content\Models\Tag::class,
+                                \Sokeio\Blog\Models\Tag::class,
                                 'title'
                             ),
                         Select::make('template')->label(__('Template'))->dataSource(Theme::getTemplateOptions())
-                            ->valueDefault('none')
+                            ->valueDefault('')
                             ->when(function (Select $field) {
                                 return $field->checkDataSource();
                             })

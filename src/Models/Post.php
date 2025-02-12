@@ -2,8 +2,9 @@
 
 namespace Sokeio\Blog\Models;
 
-use Sokeio\Content\WithSluggable;
+use Sokeio\Page\WithSluggable;
 use Sokeio\Model;
+use Sokeio\Page\Enums\PublishedType;
 
 class Post extends Model
 {
@@ -55,6 +56,10 @@ class Post extends Model
         'created_at',
         'updated_at',
     ];
+    protected $casts = [
+        'published_at' => 'datetime',
+        'published_type' => PublishedType::class
+    ];
     public function catalogs()
     {
         return $this->belongsToMany(Catalog::class, 'post_catalogs', 'post_id', 'catalog_id');
@@ -62,5 +67,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    }
+    //get related posts in catalog
+    public function RelatedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'post_catalogs', 'post_id', 'catalog_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace Sokeio\Blog\Models;
 
 use Sokeio\Model;
+use Sokeio\Page\Enums\PublishedType;
 use Sokeio\Page\WithSluggable;
 
 class Catalog extends Model
@@ -29,6 +30,11 @@ class Catalog extends Model
         'custom_css',
         'created_by',
         'updated_by',
+    ];
+
+    protected $casts = [
+        'published_at' => 'datetime',
+        'published_type' => PublishedType::class
     ];
     public function posts()
     {

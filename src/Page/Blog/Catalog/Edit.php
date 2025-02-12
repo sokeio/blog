@@ -2,8 +2,9 @@
 
 namespace Sokeio\Blog\Page\Blog\Catalog;
 
-use Sokeio\Content\Models\Catalog;
+use Sokeio\Blog\Models\Catalog;
 use Sokeio\Core\Attribute\AdminPageInfo;
+use Sokeio\Page\Enums\PublishedType;
 use Sokeio\Theme;
 use Sokeio\UI\Common\Div;
 use Sokeio\UI\Common\Button;
@@ -27,12 +28,11 @@ class Edit extends \Sokeio\Page
                 MediaFile::make('image')->label(__('Image')),
                 Textarea::make('description')->label(__('Description')),
                 Select::make('template')->label(__('Template'))->dataSource(Theme::getTemplateOptions())
-                ->valueDefault('none')
+                    ->valueDefault('')
                     ->when(function (Select $field) {
                         return $field->checkDataSource();
                     }),
-                SwitchField::make('published')->label(__('Published'))
-                    ->valueDefault($this->dataId ?  null : 1)->labelTrue(__('Active'))->labelFalse(__('Unactive')),
+                Select::make('published_type')->dataSourceWithEnum(PublishedType::class)->label(__('Published'))->valueDefault(PublishedType::PUBLISHED->value),
             ])
                 ->prefix('formData')
                 ->afterUI([

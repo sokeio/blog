@@ -2,7 +2,7 @@
 
 namespace Sokeio\Blog\Page\Blog\Post;
 
-use Sokeio\Content\Models\Post;
+use Sokeio\Blog\Models\Post;
 use Sokeio\Core\Attribute\AdminPageInfo;
 use Sokeio\UI\Common\Button;
 use Sokeio\UI\PageUI;
@@ -38,39 +38,34 @@ class Index extends \Sokeio\Page
                         ->enableIndex()
                         ->searchbox(['title', 'description', 'content'])
                         ->columnAction([
-                            ButtonEditable::make(
-                                [
+                            Button::make()->label(__('Edit'))->className('btn btn-success btn-sm ')
+                                ->modal(function (Button $button) {
+                                    return route($this->getRouteName('edit'), [
+                                        'dataId' =>
+                                        $button->getParams('row')->id
+                                    ]);
+                                }, 'Edit ' . $this->getPageConfig()->getTitle(), 'xl', 'ti ti-pencil'),
+                            Button::make()->label(__('Delete'))
+                                ->wireClick(function ($params) {
+                                    ($this->getModel())::find($params)->delete();
+                                }, 'table_delete', function (Button $button) {
+                                    return $button->getParams('row')->id;
+                                })->className('btn btn-danger ms-1 btn-sm')
+                                ->confirm(__('Are you sure?')),
 
-                                    Button::make()->label(__('Edit'))->className('btn btn-success btn-sm ')
-                                        ->modal(function (Button $button) {
-                                            return route($this->getRouteName('edit'), [
-                                                'dataId' =>
-                                                $button->getParams('row')->id
-                                            ]);
-                                        }),
-                                    Button::make()->label(__('Delete'))
-                                        ->wireClick(function ($params) {
-                                            ($this->getModel())::find($params)->delete();
-                                        }, 'table_delete', function (Button $button) {
-                                            return $button->getParams('row')->id;
-                                        })->className('btn btn-danger ms-1 btn-sm')
-                                        ->confirm(__('Are you sure?')),
-                                ]
-                            )->editText(__('Edit Quickly')),
-
+                        ])->rightUI([
+                            Button::make()
+                                ->label(__('Add ' . $this->getPageConfig()->getTitle()))
+                                ->icon('ti ti-plus')
+                                ->modalRoute(
+                                    $this->getRouteName('edit'),
+                                    __('Add ' . $this->getPageConfig()->getTitle()),
+                                    'xxl',
+                                    'ti ti-plus'
+                                )
                         ])
                 ]
-            )->rightUI([
-                Button::make()
-                    ->label(__('Add ' . $this->getPageConfig()->getTitle()))
-                    ->icon('ti ti-plus')
-                    ->modalRoute(
-                        $this->getRouteName('edit'),
-                        __('Add ' . $this->getPageConfig()->getTitle()),
-                        'lg',
-                        'ti ti-plus'
-                    )
-            ])
+            )
         ];
     }
 }

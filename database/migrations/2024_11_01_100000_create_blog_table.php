@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Sokeio\Page\Enums\PublishedType;
 
 return new class extends Migration
 {
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->string('description', 400)->nullable()->default('');
             $table->longText('content')->nullable();
             $table->string('image', 255)->nullable();
-            $table->boolean('published')->default(true);
+            $table->string('published_type')->default(PublishedType::DRAFT->value);
             $table->datetime('published_at')->nullable();
             $table->string('password')->nullable();
             $table->string('template', 255)->nullable();
@@ -41,7 +42,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('description', 400)->nullable()->default('');
             $table->string('image', 255)->nullable();
-            $table->boolean('published')->default(true);
+            $table->string('published_type')->default(PublishedType::DRAFT->value);
             $table->string('template', 255)->nullable();
             $table->string('template_blog', 255)->nullable();
             $table->longText('custom_js')->nullable();

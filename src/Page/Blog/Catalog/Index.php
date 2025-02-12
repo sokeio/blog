@@ -2,7 +2,7 @@
 
 namespace Sokeio\Blog\Page\Blog\Catalog;
 
-use Sokeio\Content\Models\Catalog;
+use Sokeio\Blog\Models\Catalog;
 use Sokeio\Core\Attribute\AdminPageInfo;
 use Sokeio\UI\Common\Button;
 use Sokeio\UI\PageUI;
@@ -50,19 +50,19 @@ class Index extends \Sokeio\Page
                                     return $button->getParams('row')->id;
                                 })->className('btn btn-danger ms-1 btn-sm')
                                 ->confirm(__('Are you sure?')),
+                        ])->rightUI([
+                            Button::make()
+                                ->label(__('Add ' . $this->getPageConfig()->getTitle()))
+                                ->icon('ti ti-plus')
+                                ->modalRoute(
+                                    $this->getRouteName('edit'),
+                                    __('Add ' . $this->getPageConfig()->getTitle()),
+                                    'lg',
+                                    'ti ti-plus'
+                                )
                         ])
                 ]
-            )->rightUI([
-                Button::make()
-                    ->label(__('Add ' . $this->getPageConfig()->getTitle()))
-                    ->icon('ti ti-plus')
-                    ->modalRoute(
-                        $this->getRouteName('edit'),
-                        __('Add ' . $this->getPageConfig()->getTitle()),
-                        'lg',
-                        'ti ti-plus'
-                    )
-            ])
+            )
 
         ];
     }
