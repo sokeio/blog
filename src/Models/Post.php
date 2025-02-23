@@ -25,7 +25,7 @@ class Post extends Model
         'description',
         'content',
         'image',
-        'published',
+        'published_type',
         'published_at',
         'password',
         'template',
@@ -50,6 +50,7 @@ class Post extends Model
         'data_css',
         'custom_js',
         'custom_css',
+        
         'content',
         'created_by',
         'updated_by',
