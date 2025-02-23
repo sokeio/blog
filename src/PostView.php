@@ -2,32 +2,15 @@
 
 namespace Sokeio\Blog;
 
-use Sokeio\Blog\Models\Post;
-use Sokeio\Page\Models\Slug;
-use Sokeio\Theme;
+use Sokeio\Page\WithSlugRender;
 
 // #[PageInfo(
 //     route:'site.post',
 //     url: 'post/{slug}',
+//     model: \Sokeio\Blog\Models\Post::class
 // )]
 class PostView extends \Sokeio\Page
 {
-    public $slug;
-
-    public function render()
-    {
-        $item = null;
-        if ($this->slug) {
-            $item =  Slug::findSluggableBySlug($this->slug, Post::class);
-            Theme::title($item?->title);
-            Theme::description($item?->description);
-        }
-        if (!$item) {
-            return abort(404);
-        }
-        echo $item->template;
-        return Theme::view('sokeio-blog::pages.post.view', [
-            'item' => $item
-        ], [], false, $item->template);
-    }
+    use WithSlugRender;
+    protected $slugView = 'sokeio-blog::pages.post.view';
 }

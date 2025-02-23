@@ -4,30 +4,16 @@ namespace Sokeio\Blog;
 
 use Sokeio\Blog\Models\Tag;
 use Sokeio\Page\Models\Slug;
+use Sokeio\Page\WithSlugRender;
 use Sokeio\Theme;
 
 // #[PageInfo(
 //     route:'site.tag',
 //     url: 'tag/{slug?}',
+//     model: \Sokeio\Blog\Models\Tag::class
 // )]
 class TagView extends \Sokeio\Page
 {
-    public $slug;
-
-    public function render()
-    {
-        $item = null;
-        if ($this->slug) {
-            $item =  Slug::findSluggableBySlug($this->slug, Tag::class);
-
-            Theme::title($item?->title);
-            Theme::description($item?->description);
-        }
-        if (!$item) {
-            return abort(404);
-        }
-        return Theme::view('sokeio-blog::pages.tag.view', [
-            'item' => $item
-        ], [], false, $item->template);
-    }
+    use WithSlugRender;
+    protected $slugView = 'sokeio-blog::pages.tag.view';
 }
