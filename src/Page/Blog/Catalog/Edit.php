@@ -26,13 +26,14 @@ class Edit extends \Sokeio\Page
             PageUI::make([
                 Input::make('title')->label(__('Title')),
                 MediaFile::make('image')->label(__('Image')),
-                Textarea::make('description')->label(__('Description')),
+
                 Select::make('template')->label(__('Template'))->dataSource(Theme::getTemplateOptions())
                     ->valueDefault('')
                     ->when(function (Select $field) {
                         return $field->checkDataSource();
                     }),
                 Select::make('published_type')->dataSourceWithEnum(PublishedType::class)->label(__('Published'))->valueDefault(PublishedType::PUBLISHED->value),
+                Textarea::make('description')->label(__('Description')),
             ])
                 ->prefix('formData')
                 ->afterUI([

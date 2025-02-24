@@ -27,9 +27,11 @@ class Index extends \Sokeio\Page
             PageUI::make(
                 [
                     Table::make()
+                    ->columnGroup('published', 'Published')
                         ->column(Column::make('title')->enableLink())
                         ->column('description')
-                        ->column('published')
+                        ->column(Column::make('published_type')->columnGroup('published'))
+                        ->column(Column::make('published_at')->columnGroup('published'))
                         ->column('created_at')
                         ->column('template')
                         ->query($this->getQuery())

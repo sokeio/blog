@@ -60,7 +60,7 @@ return new class extends Migration
             $table->string('description', 400)->nullable()->default('');
             $table->string('image', 255)->nullable();
             $table->string('template', 255)->nullable();
-            $table->string('published_type')->default(PublishedType::DRAFT->value);
+            $table->string('published_type')->default(PublishedType::PUBLISHED->value);
             $table->datetime('published_at')->nullable();
             $table->timestamps();
         });
